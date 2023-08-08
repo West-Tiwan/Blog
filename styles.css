@@ -1,0 +1,48 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#carouselExample{
+    max-height:30vh;
+    overflow: hidden;
+}
+
+.card-container{
+    display:flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    align-items: center;
+    flex: 1;
+    justify-content:space-evenly;
+}
+.container{
+    width: 100vw;
+    display: flex;
+}
+.card{
+    margin :25px;
+}
+#pager{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#member{
+    display: grid;
+    border: 2px solid black;
+    margin: 10vh 50vh 10vh 50vh;
+    padding: 20px;
+}
+#emanpass{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap :10px;
+}
+#ema{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+#pass{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
