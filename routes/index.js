@@ -64,6 +64,11 @@ router.get('/profile', isLoggedin, async function (req, res) {
   res.render('profile', { footer: true, user: user });
 });
 
+router.get('/edit', isLoggedin, async function (req, res) {
+  const user = await userModel.findOne({ username: req.session.passport.user })
+  res.render('edit', { footer: true, user: user });
+});
+
 router.post('/update', upload.single('image'), async function (req, res) {
   try {
     const user = await userModel.findOneAndUpdate({ username: req.session.passport.user }, { username: req.body.username, name: req.body.name, bio: req.body.bio }, { new: true });
@@ -86,9 +91,10 @@ router.get('/search', isLoggedin, async function (req, res) {
   res.render('search', { footer: true });
 });
 
-router.get('/edit', isLoggedin, async function (req, res) {
-  const user = await userModel.findOne({ username: req.session.passport.user })
-  res.render('edit', { footer: true, user: user });
+router.get('/username/:username', isLoggedin, async function (req, res) {
+  const regex = new RegExp(`^${req.params.username}`, 'i');
+  const users = await userModel.find({ username: regex });
+  res.json(users);
 });
 
 router.get('/upload', isLoggedin, async function (req, res) {
@@ -108,12 +114,6 @@ router.post('/upload', isLoggedin, upload.single("image"), async function (req, 
   await user.save();
   console.log(post);
   res.redirect("/feed");
-});
-
-router.get('/username/:username', isLoggedin, async function (req, res) {
-  const regex = new RegExp(`^${req.params.username}`, 'i');
-  const users = await userModel.find({ username: regex });
-  res.json(users);
 });
 
 router.get('/delete/post/:id', isLoggedin, async function (req, res) {
