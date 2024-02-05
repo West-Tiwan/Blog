@@ -100,6 +100,7 @@ router.post('/upload', isLoggedin, upload.single("image"), async function (req, 
   const user = await userModel.findOne({ username: req.session.passport.user });
   const post = await postModel.create({
     cover: req.file.filename,
+    heading:req.body.heading,
     user: user._id,
     body: req.body.body,
   })
