@@ -71,7 +71,7 @@ router.get('/edit', isLoggedin, async function (req, res) {
 
 router.post('/update', upload.single('image'), async function (req, res) {
   try {
-    const user = await userModel.findOneAndUpdate({ username: req.session.passport.user }, { username: req.body.username, name: req.body.name, bio: req.body.bio }, { new: true });
+    const user = await userModel.findOneAndUpdate({ username: req.session.passport.user }, { name: req.body.name, bio: req.body.bio }, { new: true });
     if (req.file) {
       if (user.profileImage != 'default.png') {
         fs.rm("public/images/uploads/" + user.profileImage, { force: true }, (err) => {
