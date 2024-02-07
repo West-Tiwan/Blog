@@ -3,6 +3,7 @@ var router = express.Router();
 const upload = require('./multer.js');
 const passport = require('passport');
 const localStratergy = require('passport-local');
+const fs = require('fs');
 var userModel = require('./users.js');
 var postModel = require('./post.js');
 passport.use(new localStratergy(userModel.authenticate()));
@@ -56,7 +57,7 @@ router.get('/logout', function (req, res, next) {
 router.get('/feed', isLoggedin, async function (req, res) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const post = await postModel.find().populate('user');
-  res.render('feed', { footer: true, post:post, user:user });
+  res.render('feed', { footer: true, post: post, user: user });
 });
 
 router.get('/profile', isLoggedin, async function (req, res) {
@@ -69,7 +70,7 @@ router.get('/edit', isLoggedin, async function (req, res) {
   res.render('edit', { footer: true, user: user });
 });
 
-router.post('/update', upload.single('image'), async function (req, res) {
+router.post('/update', isLoggedin, upload.single('image'), async function (req, res) {
   try {
     const user = await userModel.findOneAndUpdate({ username: req.session.passport.user }, { name: req.body.name, bio: req.body.bio }, { new: true });
     if (req.file) {
@@ -128,7 +129,7 @@ router.get('/delete/post/:id', isLoggedin, async function (req, res) {
   res.redirect('/profile');
 });
 
-router.get('/:anything',function(req,res){
+router.get('/:anything', function (req, res) {
   res.render("error");
 })
 
