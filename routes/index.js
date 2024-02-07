@@ -56,7 +56,7 @@ router.get('/logout', function (req, res, next) {
 router.get('/feed', isLoggedin, async function (req, res) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const post = await postModel.find().populate('user');
-  res.render('feed', { footer: true, post, user });
+  res.render('feed', { footer: true, post:post, user:user });
 });
 
 router.get('/profile', isLoggedin, async function (req, res) {
@@ -106,7 +106,7 @@ router.post('/upload', isLoggedin, upload.single("image"), async function (req, 
   const user = await userModel.findOne({ username: req.session.passport.user });
   const post = await postModel.create({
     cover: req.file.filename,
-    heading:req.body.heading,
+    heading: req.body.heading,
     user: user._id,
     body: req.body.body,
   })

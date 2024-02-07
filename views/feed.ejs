@@ -1,12 +1,10 @@
 <% include ./partials/header.ejs %>
-<div class="container">
-    <%= user.posts.forEach(function(post){ %>
+<% post.reverse().forEach(function(elem){%>
         <div class="container">
-            <img src="/images/uploads/<%= post.cover %>">
-            <%= post.heading %>
-            <%= post.date %>
-            <%= post.body %>
+            <img src="/images/uploads/<%= elem.cover %>">
+            <%= elem.heading %>
+                <%= elem.date %>
+                    <%= elem.body %>
         </div>
-    <%= }) %>
-</div>
-<% include ./partials/footer.ejs %>
+        <% }) %>
+            <% include ./partials/footer.ejs %>
