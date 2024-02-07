@@ -122,7 +122,7 @@ router.get('/delete/post/:id', isLoggedin, async function (req, res) {
   const post = await postModel.findOne({ _id: req.params.id });
   user.posts.splice(user.posts.indexOf(post._id), 1);
   let rem = await postModel.deleteOne({ _id: req.params.id });
-  fs.rm("public/images/uploads/" + post.picture, { force: true }, (err) => {
+  fs.rm("public/images/uploads/" + post.cover, { force: true }, (err) => {
     console.log(err);
   });
   user.save();
