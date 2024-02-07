@@ -128,4 +128,8 @@ router.get('/delete/post/:id', isLoggedin, async function (req, res) {
   res.redirect('/profile');
 });
 
+router.get('/:anything',function(req,res){
+  res.render("error");
+})
+
 module.exports = router;
