@@ -89,7 +89,7 @@ router.post('/update', isLoggedin, upload.single('image'), async function (req, 
 });
 
 router.get('/search', function (req, res) {
-  res.render("search");
+  res.render('search');
 });
 
 router.get('/username/:username', isLoggedin, async function (req, res) {
