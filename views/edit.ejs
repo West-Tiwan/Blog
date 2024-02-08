@@ -5,7 +5,7 @@
       <button id="editbtn" class="text-blue-500 capitalize">edit picture</button>
     </div>
     <form action="/update" method="post" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="<%= user.name %>">
+        <input type="text" name="name" value="<%= user.name %>">
         <input id="imageinput" hidden type="file" name="image">
         <textarea name="bio"><%= user.bio %> </textarea>
         <button type="submit">Submit</button>

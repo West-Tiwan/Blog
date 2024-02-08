@@ -14,23 +14,25 @@
       <a class="px-3 py-2 bg-zinc-800 text-xs rounded-md" href="/edit">Edit Profile</a>
     </div>
     <div class="px-6 mt-5">
+      <a class="px-3 py-2 bg-zinc-800 text-xs rounded-md" href="/search">Search</a>
+    </div>
+    <div class="px-6 mt-5">
       <a class="px-3 py-2 bg-zinc-800 text-xs rounded-md" href="/feed">feed</a>
     </div>
     <div class="px-6 mt-5">
       <a class="px-3 py-2 bg-zinc-800 text-xs rounded-md" href="/upload">Upload a Blog</a>
     </div>
-    <div class="px-6 mt-5">
-      <a class="px-3 py-2 bg-zinc-800 text-xs rounded-md" href="/search">Search</a>
-    </div>
     <div class="posts w-full flex gap-1 py-2 mt-5 flex-wrap" id="postArea">
       <% user.posts.forEach(function(posts){ %>
-        <div class="post w-[32.5%] h-32 bg-sky-100 overflow-hidden">
-          <img class="h-full w-full object-cover" src="/images/uploads/<%=posts.cover%>">
-          <h5>
-            <%= posts.heading %>
-          </h5>
-          <a class="px-3 py-2 bg-zinc-800 text-xs rounded-md" href="/delete/post/<%= posts._id %>">Delete</a>
-        </div>
+        <a href="/blogger/<%= user._id %>/<%= posts._id %>">
+          <div class="post w-[32.5%] h-32 bg-sky-100 overflow-hidden">
+            <img class="h-full w-full object-cover" src="/images/uploads/<%=posts.cover%>">
+            <h5>
+              <%= posts.heading %>
+            </h5>
+            <a class="px-3 py-2 bg-zinc-800 text-xs rounded-md" href="/delete/post/<%= posts._id %>">Delete</a>
+          </div>
+        </a>
         <% }); %>
     </div>
   </div>
