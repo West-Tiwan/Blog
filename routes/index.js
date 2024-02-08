@@ -88,8 +88,21 @@ router.post('/update', isLoggedin, upload.single('image'), async function (req, 
   res.redirect('/profile');
 });
 
-router.get('/search', function (req, res) {
-  res.render('search');
+router.get('/search', isLoggedin, async function (req, res) {
+  const user = await userModel.findOne({ username: req.session.passport.user })
+  res.render('search', { footer: true, user: user });
+});
+
+router.get('/blogger/:user', async function (req, res) {
+  const user = await userModel.findOne({ _id: req.params.user }).populate("posts");
+  console.log(user);
+  res.render('userpage', { user: user });
+});
+
+router.get('/blogger/:user/:blog', async function (req, res) {
+  const user = await userModel.findOne({ _id: req.params.user });
+  const post = await postModel.findOne({ _id: req.params.blog });
+  res.render('blogpage', { post: post, user: user });
 });
 
 router.get('/username/:username', isLoggedin, async function (req, res) {
@@ -127,12 +140,6 @@ router.get('/delete/post/:id', isLoggedin, async function (req, res) {
   });
   user.save();
   res.redirect('/profile');
-});
-
-router.get('/blogger/:user/:blog', async function (req, res) {
-  const user = await userModel.findOne({ _id: req.params.user });
-  const post = await postModel.findOne({ _id: req.params.blog });
-  res.render('blogpage', { post: post, user: user });
 });
 
 router.get('/:anything', function (req, res) {

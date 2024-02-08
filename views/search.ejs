@@ -1,7 +1,8 @@
 <% include ./partials/header.ejs %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
         integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
             let clutter = "";
             window.addEventListener("DOMContentLoaded", (event) => {
                 const el = document.getElementById('inputusername');
@@ -11,7 +12,7 @@
                             clutter = '';
                             data.data.forEach((elem) => {
                                 clutter += `
-        <a href="/blogger/<%= user._id %>/<%= posts._id %>">
+        <a href="/blogger/<%= user._id %>">
     <div class="flex items-center gap-2 mt-5">
         <div class="image w-[11vw] h-[11vw] rounded-full bg-sky-100 overflow-hidden"><img class="h-full w-full objectfit-cover" src="/images/uploads/${elem.profileImage}"></div>
             <h3>${elem.username}</h3>
