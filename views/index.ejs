@@ -1,34 +1,23 @@
 <% include ./partials/header.ejs %>
-  <div class="container">
-    <form class="row g-3 needs-validation" novalidate method="post" action="/register">
-      <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">Name</label>
-        <input type="text" class="form-control" id="validationCustom01" name="name" required>
-        <div class="valid-feedback">
-          Looks good!
+  <div>
+    <form novalidate method="post" action="/register">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="Username">Username</label>
+        <div>
+          <input type="text" id="Username"  name="username" required>
         </div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustomUsername" class="form-label">Username</label>
-        <div class="input-group has-validation">
-          <span class="input-group-text" id="inputGroupPrepend">@</span>
-          <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-            name="username" required>
-          <div class="invalid-feedback">
-            Please choose a username.
-          </div>
-        </div>
+      <div>
+        <label for="passwd">Password</label>
+        <input type="text" id="passwd" name="password" type="password" required>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">Password</label>
-        <input type="text" class="form-control" id="validationCustom01" name="password" type="password" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      <span>Already have an account ? <a href="/login" class="text-blue-500">Log In</a></span>
-      <div class="col-12">
-        <button class="btn btn-primary" type="submit">Submit form</button>
+      <span>Already have an account ? <a href="/login">Log In</a></span>
+      <div>
+        <button type="submit">Submit form</button>
       </div>
     </form>
   </div>

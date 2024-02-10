@@ -4,8 +4,8 @@
 <%= user.username %>
 <% user.posts.forEach(function(post) { %>
     <a href="/blogger/<%= user._id %>/<%= post._id %>">
-        <div class="post w-[32.5%] h-32 bg-sky-100 overflow-hidden">
-            <img class="h-full w-full object-cover" src="/images/uploads/<%= post.cover %>">
+        <div>
+            <img src="/images/uploads/<%= post.cover %>">
             <h5>
                 <%= post.heading %>
             </h5>
