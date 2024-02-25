@@ -605,3 +605,8 @@ video {
 .justify-center {
   justify-content: center;
 }
+
+.bg-amber-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 191 36 / var(--tw-bg-opacity));
+}
