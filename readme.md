@@ -71,7 +71,7 @@ This project is a platform for creating and sharing blog posts. It provides user
 ## Technologies Used
 
 - **Frontend:**
-  - TailwindCSS
+  - TailwindCSS(not working properly)
   - HTML5, CSS3, JavaScript
 
 - **Backend:**
