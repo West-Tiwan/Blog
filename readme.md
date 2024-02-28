@@ -8,7 +8,6 @@ This project is a platform for creating and sharing blog posts. It provides user
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
